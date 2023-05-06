@@ -12,30 +12,24 @@ import java.nio.file.Paths;
 public class Labirinto {
 
     private char[][] labirinto;
-    private char[] vet;
     private char[][] mat;
     private BufferedReader BufferFile;
     private FileReader FileReader;
 
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
-        // String diretorioAtual = System.getProperty("user.dir");
-        // System.out.println("Diretório atual: " + diretorioAtual);
-
-        // String currentDir = Paths.get(".").toAbsolutePath().normalize().toString();
-        // System.out.println("Diretório atual: " + currentDir);
 
         // testes das funcoes
-        Labirinto labirinto = new Labirinto();
         String filename = "/home/kaio/Documentos/desafioLabII/desafio/src/teste.txt";
         try {
-            labirinto.criaLabirinto(filename);
+            Labirinto classLabirinto = new Labirinto();
+            classLabirinto.criaLabirinto(filename);
+            classLabirinto.percorreLabirinto();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public char[][] criaLabirinto(String filename) throws IOException {
+    public void criaLabirinto(String filename) throws IOException {
 
         try {
             FileReader = new FileReader(filename);
@@ -59,7 +53,6 @@ public class Labirinto {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return mat;
 
     }
 
@@ -110,5 +103,9 @@ public class Labirinto {
                 break;
         }
         return cont;
+    }
+
+    public boolean percorreLabirinto(){
+        return false;
     }
 }
