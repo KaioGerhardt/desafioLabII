@@ -12,7 +12,6 @@ import java.nio.file.Paths;
 public class Labirinto {
 
     private char[][] labirinto;
-    private char[][] mat;
     private BufferedReader BufferFile;
     private FileReader FileReader;
 
@@ -106,6 +105,34 @@ public class Labirinto {
     }
 
     public boolean percorreLabirinto(){
-        return false;
+        return walkMazeRecursive(0, 0);
+    }
+
+
+    private boolean walkMazeRecursive(int linha, int coluna) {
+        if (linha < 0 || linha >= labirinto.length || coluna < 0 || coluna >= labirinto[0].length) {
+            return false;
+        }
+        
+        if (labirinto[linha][coluna] == 'D') {
+            return true;
+        }
+        
+        if (labirinto[linha][coluna] == 'X' || labirinto[linha][coluna] == '*') {
+            return false;
+        }
+        
+        labirinto[linha][coluna] = '*';
+        
+        boolean isExit = walkMazeRecursive(linha - 1, coluna) ||
+                           walkMazeRecursive(linha, coluna + 1) ||
+                           walkMazeRecursive(linha + 1, coluna) ||
+                           walkMazeRecursive(linha, coluna - 1);
+        
+        if (!isExit) {
+            labirinto[linha][coluna] = ' ';
+        }
+        
+        return isExit;
     }
 }
