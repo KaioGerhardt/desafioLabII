@@ -16,8 +16,9 @@ public class PrincipalCandidatos {
             candidatos[i] = new Candidato(nome, partido, intencoesVotos);
         }
 
-        ordenaCandidatosPorNome(candidatos);
-
+        // ordenaCandidatosPorNome(candidatos);
+        // ordenaCandidatosPorVotos(candidatos);
+        // ordenaCandidatosPorPartido(candidatos);
     }
 
     public static Candidato[] ordenaCandidatosPorNome(Candidato[] candidatos){
@@ -45,13 +46,42 @@ public class PrincipalCandidatos {
 
     }
     
-    // public static Candidato[] ordenaCandidatosPorVotos(Candidato[] candidatos){
-        
-    // }
+    public static Candidato[] ordenaCandidatosPorVotos(Candidato[] candidatos){
 
-    // public static Candidato[] ordenaCandidatosPorPartido(Candidato[] candidatos){
-        
-    // }
+        int n = candidatos.length;
+
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (candidatos[j].getIntencoesVotos() < candidatos[j + 1].getIntencoesVotos()) {
+                    Candidato temp = candidatos[j];
+                    candidatos[j] = candidatos[j + 1];
+                    candidatos[j + 1] = temp;
+                }
+            }
+        }
+
+        return candidatos;
+    }
+
+    public static Candidato[] ordenaCandidatosPorPartido(Candidato[] candidatos){
+        int n = candidatos.length;
+
+        for (int i = 0; i < n - 1; i++) {
+            int indiceDoMenor = i;
+            for (int j = i + 1; j < n; j++) {
+                if (candidatos[j].getPartido().compareTo(candidatos[indiceDoMenor].getPartido()) < 0) {
+                    indiceDoMenor = j;
+                }
+            }
+            if (indiceDoMenor != i) {
+                Candidato temp = candidatos[i];
+                candidatos[i] = candidatos[indiceDoMenor];
+                candidatos[indiceDoMenor] = temp;
+            }
+        }
+
+        return candidatos;
+    }
 
     // metodo para gerar nome aleatorio
     public static String randomNome(){
