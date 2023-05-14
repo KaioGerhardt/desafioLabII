@@ -1,3 +1,5 @@
+package segundaEtapa;
+
 public class Candidato {
     
     private String nome;

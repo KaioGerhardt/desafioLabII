@@ -1,3 +1,4 @@
+package segundaEtapa;
 import java.util.Scanner;
 import java.util.Random;
 
@@ -11,14 +12,14 @@ public class PrincipalCandidatos {
         for (int i = 0; i < tamanho; i++) {
             String nome = randomNome();
             String partido = randomPartido();
-            int intencoesVotos = random.nextInt(1000) + 1;
+            int intencoesVotos = random.nextInt(10) + 1;
             
             candidatos[i] = new Candidato(nome, partido, intencoesVotos);
         }
 
         // necessario ajustar o metodo ordenaCandidatosPorNome, para que quando tiver o mesmo nome, com a mesma quantidade de votos, ordenar por partido 
 
-        // ordenaCandidatosPorNome(candidatos);
+        ordenaCandidatosPorNome(candidatos);
         // ordenaCandidatosPorVotos(candidatos);
         // ordenaCandidatosPorPartido(candidatos);
 
@@ -119,11 +120,11 @@ public class PrincipalCandidatos {
     // metodo para gerar nome aleatorio
     public static String randomNome(){
         String[] nomes = {
-            "João", "Maria", "Pedro", "Ana", "Paula", "Lucas", "Fernanda"
+            "João"
         };
 
         String[] sobrenomes = {
-            "Silva", "Santos", "Oliveira", "Souza", "Ferreira", "Costa", "Gomes"
+            "Silva"
         };
 
         Random random = new Random();
