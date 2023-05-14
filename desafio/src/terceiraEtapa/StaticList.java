@@ -88,6 +88,84 @@ public class StaticList<E> implements List<E> {
 		return -1;
 	}
 	
+	public boolean remove(E element) throws UnderflowException{
+		if(this.isEmpty()) throw new UnderflowException();
+		int pos = this.search(element);
+		if(pos != -1){
+			remove(pos);
+			return true;
+		}
+		return false;
+	}
+
+	public void insertAfter(E obj1, E obj2) throws OverflowException{
+		if(this.isFull()) throw new OverflowException();
+		int pos = this.search(obj1);
+		if(pos != -1)
+			insert(obj2, pos+1);
+	}
+	
+	public void swap(int pos1, int pos2) throws IndexOutOfBoundsException{
+		if(pos1 < 0 || pos1 >= numElements || pos2 < 0 || pos2 >= numElements)
+			throw new IndexOutOfBoundsException();
+		E aux = elements[pos1];
+		elements[pos1] = elements[pos2];
+		elements[pos2] = aux;
+	}
+
+	public void flip(){
+		for(int i=0; i<numElements; i++)
+			insert(remove(numElements-1), i);
+	}
+	
+	public void insert(List<E> novaLista, int pos) throws OverflowException, IndexOutOfBoundsException{
+		if(pos < 0 || pos > numElements)
+			throw new IndexOutOfBoundsException();
+		for(int i=0; i < novaLista.numElements(); i++)
+			insert(novaLista.get(i), pos++);
+	}
+
+	public void dedup(){
+		for(int i=0; i<numElements-1; i++)
+			for(int j=i+1; j<numElements; j++)
+				if(elements[i].equals(elements[j]))
+					remove(j--);
+	}
+	
+	public boolean equals (List<E> lista1, List<E> lista2) {
+		if (lista1.equals(lista2))
+			return true;
+		return false;
+	}
+	
+	public List<E> clone (){
+		List<E> listaretorno = new StaticList<>(numElements);
+		for (int i=0; i < numElements; i++) {
+			listaretorno.insert(get(i),i);
+		}
+		return listaretorno;
+	}
+	
+	public int remove(int ini, int fim) {
+		int cont=0;
+		for(int i = ini; i <= fim; i++) {
+			remove(i);
+			cont++;
+		}
+		return cont;
+	}
+	
+	public List<E> split(int pos){
+		List<E> listaretorno = new StaticList<>(numElements);
+		int cont = 0;
+		int fim = numElements;
+		for(int i = pos; i < fim;i++) {
+			listaretorno.insert(remove(pos), cont);
+			cont++;
+		}
+		return listaretorno;
+	}
+	
 	/**
 	 * Retorna uma representação String da lista.
 	 * @see java.lang.Object#toString()
