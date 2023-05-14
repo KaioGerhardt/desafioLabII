@@ -1,4 +1,4 @@
-import java.sql.Array;
+import java.util.Scanner;
 import java.util.Random;
 
 public class PrincipalCandidatos {
@@ -16,9 +16,18 @@ public class PrincipalCandidatos {
             candidatos[i] = new Candidato(nome, partido, intencoesVotos);
         }
 
+        // necessario ajustar o metodo ordenaCandidatosPorNome, para que quando tiver o mesmo nome, com a mesma quantidade de votos, ordenar por partido 
+
         // ordenaCandidatosPorNome(candidatos);
         // ordenaCandidatosPorVotos(candidatos);
         // ordenaCandidatosPorPartido(candidatos);
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Digite o primeiro nome do candidato a ser buscado: ");
+        String primeiroNome = scanner.nextLine();
+
+        int position = pesquisaBinariaCandidatos(candidatos, primeiroNome);
+        System.out.println(candidatos[position].toString());
     }
 
     public static Candidato[] ordenaCandidatosPorNome(Candidato[] candidatos){
@@ -83,18 +92,38 @@ public class PrincipalCandidatos {
         return candidatos;
     }
 
+    public static int pesquisaBinariaCandidatos(Candidato[] candidatos, String nomeCandidato){
+        int esquerda = 0;
+        int direita = candidatos.length - 1;
+    
+        while (esquerda <= direita) {
+            int meio = (esquerda + direita) / 2;
+    
+            String nomeCompleto = candidatos[meio].getNome();
+            String[] partesNome = nomeCompleto.split(" ");
+            String nome = partesNome[0];
+    
+            int comparacao = nome.compareToIgnoreCase(nomeCandidato);
+            if (comparacao == 0) {
+                return meio;
+            } else if (comparacao < 0) {
+                esquerda = meio + 1;
+            } else {
+                direita = meio - 1;
+            }
+        }
+    
+        return -1;
+    }
+
     // metodo para gerar nome aleatorio
     public static String randomNome(){
         String[] nomes = {
-            "João", "Maria", "Pedro", "Ana", "Paula", "Lucas", "Fernanda", "Rafael",
-            "Camila", "Carlos", "Renata", "Marcelo", "Mariana", "Bruno", "Juliana",
-            "Rodrigo", "Thais", "Gabriel", "Isabela", "Felipe"
+            "João", "Maria", "Pedro", "Ana", "Paula", "Lucas", "Fernanda"
         };
 
         String[] sobrenomes = {
-            "Silva", "Santos", "Oliveira", "Souza", "Ferreira", "Costa", "Gomes",
-            "Pereira", "Ribeiro", "Almeida", "Carvalho", "Lima", "Araujo", "Rodrigues",
-            "Martins", "Correia", "Barros", "Mendonça", "Fernandes", "Nascimento"
+            "Silva", "Santos", "Oliveira", "Souza", "Ferreira", "Costa", "Gomes"
         };
 
         Random random = new Random();
