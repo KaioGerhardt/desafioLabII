@@ -1,3 +1,4 @@
+package terceiraEtapa;
 /**
  * Implementação de uma lista linear com armazenamento estático,
  * baseado em array.

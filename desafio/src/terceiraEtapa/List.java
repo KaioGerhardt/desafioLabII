@@ -1,3 +1,4 @@
+package terceiraEtapa;
 /**
  * Interface que define o comportamento de uma lista linear.
  */
