@@ -1,3 +1,4 @@
+import java.sql.Array;
 import java.util.Random;
 
 public class PrincipalCandidatos {
@@ -15,7 +16,42 @@ public class PrincipalCandidatos {
             candidatos[i] = new Candidato(nome, partido, intencoesVotos);
         }
 
+        ordenaCandidatosPorNome(candidatos);
+
     }
+
+    public static Candidato[] ordenaCandidatosPorNome(Candidato[] candidatos){
+
+        int i, j, indiceDoMenor;
+        Candidato temp;
+        int n = candidatos.length;
+
+        for (i = 0; i < n - 1; i++) {
+            indiceDoMenor = i;
+            for (j = i + 1; j < n; j++) {
+                int comparacaoNomes = candidatos[j].getNome().compareTo(candidatos[indiceDoMenor].getNome());
+                if (comparacaoNomes < 0 || (comparacaoNomes == 0 && candidatos[j].getIntencoesVotos() > candidatos[indiceDoMenor].getIntencoesVotos())) {
+                    indiceDoMenor = j;
+                }
+            }
+            if (indiceDoMenor != i) {
+                temp = candidatos[i];
+                candidatos[i] = candidatos[indiceDoMenor];
+                candidatos[indiceDoMenor] = temp;
+            }
+        }
+
+        return candidatos;
+
+    }
+    
+    // public static Candidato[] ordenaCandidatosPorVotos(Candidato[] candidatos){
+        
+    // }
+
+    // public static Candidato[] ordenaCandidatosPorPartido(Candidato[] candidatos){
+        
+    // }
 
     // metodo para gerar nome aleatorio
     public static String randomNome(){
