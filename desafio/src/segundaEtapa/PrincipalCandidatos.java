@@ -120,11 +120,11 @@ public class PrincipalCandidatos {
     // metodo para gerar nome aleatorio
     public static String randomNome(){
         String[] nomes = {
-            "João"
+            "João", "Maria", "Pedro", "Ana", "Paula", "Lucas", "Fernanda"
         };
 
         String[] sobrenomes = {
-            "Silva"
+            "Silva", "Santos", "Oliveira", "Souza", "Ferreira", "Costa", "Gomes"
         };
 
         Random random = new Random();
