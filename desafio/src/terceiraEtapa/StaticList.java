@@ -166,6 +166,22 @@ public class StaticList<E> implements List<E> {
 		return listaretorno;
 	}
 	
+	public int contaElementos(E el) throws IndexOutOfBoundsException {
+		return searchRecursive(el, 0);
+	}
+
+	private int searchRecursive(E elemento, int indice) throws IndexOutOfBoundsException {
+		if (indice > numElements) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        if (elements[indice] == elemento) {
+            return 1 + searchRecursive(elemento, indice + 1);
+        }
+
+        return searchRecursive(elemento, indice + 1);
+    }
+
 	/**
 	 * Retorna uma representação String da lista.
 	 * @see java.lang.Object#toString()
