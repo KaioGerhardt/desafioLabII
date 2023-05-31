@@ -1,16 +1,21 @@
+package quartaEtapa;
+
+import terceiraEtapa.OverflowException;
+import terceiraEtapa.UnderflowException;
+
 /**
  * Interface que define o comportamento de uma Pilha.
  */
 public interface Stack<E> {
 	/**
-	 * Informa se a pilha est‡ vazia.
-	 * @return Verdadeiro se a pilha estiver vazia, falso caso contr‡rio.
+	 * Informa se a pilha estï¿½ vazia.
+	 * @return Verdadeiro se a pilha estiver vazia, falso caso contrï¿½rio.
 	 */
 	public boolean isEmpty();
 	
 	/**
-	 * Informa se a pilha est‡ cheia.
-	 * @return Verdadeiro se a pilha estiver cheia, falso caso contr‡rio.
+	 * Informa se a pilha estï¿½ cheia.
+	 * @return Verdadeiro se a pilha estiver cheia, falso caso contrï¿½rio.
 	 */
 	public boolean isFull();
 	
@@ -21,7 +26,7 @@ public interface Stack<E> {
 	public int numElements();
 
 	/**
-	 * Adiciona um novo elemento ˆ pilha.
+	 * Adiciona um novo elemento ï¿½ pilha.
 	 * @param element O elemento a ser adicionado
 	 */
 	public void push(E element) throws OverflowException;

@@ -1,16 +1,21 @@
+package quartaEtapa;
+
+import terceiraEtapa.OverflowException;
+import terceiraEtapa.UnderflowException;
+
 /**
  * Interface que define o comportamento de uma Fila.
  */
 public interface Queue<E> {
 	/**
-	 * Informa se a fila est‡ vazia.
-	 * @return Verdadeiro se a fila estiver vazia, falso caso contr‡rio.
+	 * Informa se a fila estï¿½ vazia.
+	 * @return Verdadeiro se a fila estiver vazia, falso caso contrï¿½rio.
 	 */
 	public boolean isEmpty();
 	
 	/**
-	 * Informa se a fila est‡ cheia.
-	 * @return Verdadeiro se a fila estiver cheia, falso caso contr‡rio.
+	 * Informa se a fila estï¿½ cheia.
+	 * @return Verdadeiro se a fila estiver cheia, falso caso contrï¿½rio.
 	 */
 	public boolean isFull();
 	
@@ -39,8 +44,8 @@ public interface Queue<E> {
 	public E front() throws UnderflowException;
 	
 	/**
-	 * Informa qual o œltimo elemento da fila.
-	 * @return O œltimo elemento da fila
+	 * Informa qual o ï¿½ltimo elemento da fila.
+	 * @return O ï¿½ltimo elemento da fila
 	 */
 	public E back() throws UnderflowException;
 }
