@@ -41,7 +41,12 @@ public class PrincipalCandidatos {
             indiceDoMenor = i;
             for (j = i + 1; j < n; j++) {
                 int comparacaoNomes = candidatos[j].getNome().compareTo(candidatos[indiceDoMenor].getNome());
-                if (comparacaoNomes < 0 || (comparacaoNomes == 0 && candidatos[j].getIntencoesVotos() > candidatos[indiceDoMenor].getIntencoesVotos())) {
+                if (
+                    comparacaoNomes < 0 || 
+                    (comparacaoNomes == 0 && candidatos[j].getIntencoesVotos() > candidatos[indiceDoMenor].getIntencoesVotos()) || 
+                    (comparacaoNomes == 0 && candidatos[j].getIntencoesVotos() == candidatos[indiceDoMenor].getIntencoesVotos() &&
+                    candidatos[j].getPartido().compareTo(candidatos[indiceDoMenor].getPartido()) < 0)
+                ) {
                     indiceDoMenor = j;
                 }
             }
