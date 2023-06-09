@@ -17,8 +17,6 @@ public class PrincipalCandidatos {
             candidatos[i] = new Candidato(nome, partido, intencoesVotos);
         }
 
-        // necessario ajustar o metodo ordenaCandidatosPorNome, para que quando tiver o mesmo nome, com a mesma quantidade de votos, ordenar por partido 
-
         ordenaCandidatosPorNome(candidatos);
         // ordenaCandidatosPorVotos(candidatos);
         // ordenaCandidatosPorPartido(candidatos);
