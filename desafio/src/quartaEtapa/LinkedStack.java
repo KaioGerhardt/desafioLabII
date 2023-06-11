@@ -6,8 +6,8 @@ import terceiraEtapa.OverflowException;
 import terceiraEtapa.UnderflowException;
 
 public class LinkedStack<E> implements Stack<E> {
-    private Node<E> topNode; // Referência para o nó do topo da pilha
-    private int size; // Contador para acompanhar o número de elementos na pilha
+    private Node<E> topNode;
+    private int size;
 
     public LinkedStack() {
         topNode = null;
@@ -21,7 +21,7 @@ public class LinkedStack<E> implements Stack<E> {
 
     @Override
     public boolean isFull() {
-        return false; // Como é uma pilha encadeada, ela não tem limite de capacidade
+        return false;
     }
 
     @Override

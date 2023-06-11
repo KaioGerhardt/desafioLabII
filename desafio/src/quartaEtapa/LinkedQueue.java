@@ -5,9 +5,9 @@ import quartaEtapa.Node;
 import terceiraEtapa.UnderflowException;
 
 public class LinkedQueue<E> implements Queue<E> {
-    private Node<E> frontNode; // Referência para o nó da frente da fila
-    private Node<E> backNode; // Referência para o nó de trás da fila
-    private int size; // Contador para acompanhar o número de elementos na fila
+    private Node<E> frontNode;
+    private Node<E> backNode;
+    private int size; 
 
     public LinkedQueue() {
         frontNode = null;
@@ -22,7 +22,7 @@ public class LinkedQueue<E> implements Queue<E> {
 
     @Override
     public boolean isFull() {
-        return false; // Como é uma fila encadeada, ela não tem limite de capacidade
+        return false;
     }
 
     @Override
